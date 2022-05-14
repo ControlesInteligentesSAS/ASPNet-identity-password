@@ -12,7 +12,7 @@ def hashPassword(password) -> str:
 
 
 def validatePassword(password: str, hashedPassword) -> bool:
-    src = base64_decode(hashedPassword)
+    src = base64.b64decode(hashedPassword)
     if len(src) != 49:
         return False
     salt = src[1:17]
@@ -22,4 +22,3 @@ def validatePassword(password: str, hashedPassword) -> bool:
         if bytes[i] != passgened[i]:
             return False
     return True
-    
